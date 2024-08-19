@@ -33,13 +33,13 @@ void solve()
             int cnt=0;
             for(int j=0;j<n;j++)
             {
-                if(v[j]&(1ULL<<i)) continue;
+                if(v[j]&(1<<i)) continue;
                 else cnt++;
             }
             if(cnt<=k)
             {
                 k-=cnt;
-                ans+=(1ULL<<i);
+                ans+=(1<<i);
             }
         }
         cout<<ans<<'\n';
