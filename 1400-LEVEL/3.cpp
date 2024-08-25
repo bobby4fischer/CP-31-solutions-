@@ -13,38 +13,34 @@ ll lcm(ll a, ll b){return ((a/gcd(a,b))*b);}
 #define rep2(a,b) for(ll i=a;i>=b;i--)
 bool odd(ll num) { return ((num & 1) == 1); }
 bool even(ll num) { return ((num & 1) == 0); }
+bool check(int k, vector<pair<int, int>>& seg) {
+    int i = 0, j = 0;
+    for (auto &e:seg) {
+        i = max(i - k, e.first);
+        j = min(j + k, e.second);
+        if (i > j) return false;
+    }
+    return true;
+}
 void gen()
 {
-    ll n;
+    int n;
     cin>>n;
-    unordered_map<ll,ll>mp;
-    ll k[n];
-    vector<ll> bits[n]; //array of n vectors
-    for(int j=0;j<n;j++)
+    vector<pair<int,int>>v(n);
+    for(int i=0;i<n;i++)
     {
-        cin>>k[j];
-        for(ll i=0;i<k[j];i++)
-        {
-            ll x;
-            cin>>x;
-            mp[x]++;
-            bits[j].push_back(x);
-        }
+        int x,y;
+        cin>>x>>y;
+        v[i]={x,y};
     }
-    bool flag=true;
-    for(ll i=0; i<n; i++)
+    ll i=0,j=1000000010;
+    while(i<=j)
     {
-        ll f=0;
-        for(ll j=0; j<k[i]; j++)
-        {
-            if(mp[bits[i][j]]==1){
-                f++;
-                break;
-            }
-        }
-        if(f==0) {cout<<"Yes"<<'\n';flag=false;break;}
+        int mid=(i+j)/2;
+        if(check(mid,v)) j=mid-1;
+        else i=mid+1;
     }
-    if(flag) cout<<"No"<<'\n';
+    cout<<j+1<<'\n';
 }
 signed main()
 {
