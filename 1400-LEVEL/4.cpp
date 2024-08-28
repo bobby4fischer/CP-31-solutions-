@@ -26,10 +26,10 @@ void gen()
         ll mini = v[0];
         for (ll i = 0; i < n - 1; i++) mini = min(mini, v[i + 1] - v[i]);
         bool flag=true;
-        if (k == 1) {flag=false;cout<<mini<<'\n';}
-        for (ll i = 0; i < n; i++) 
+        if(k == 1) {flag=false;cout<<mini<<'\n';}
+        for(ll i = 0; i < n; i++) 
         {
-            for (ll j = 0; j < i; j++) 
+            for(ll j = 0; j < i; j++) 
             {
                 ll a = v[i] - v[j];
                 ll p = lower_bound(all(v),a)-v.begin();
