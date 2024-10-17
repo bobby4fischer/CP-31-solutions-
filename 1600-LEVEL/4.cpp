@@ -31,13 +31,13 @@ void gen()
     vector<ll>v(n);
     FOR(v);
     ll i=0,j=1000000100;
-    while(i<j) 
+    while(i<=j) 
     {
         ll mid =(i+j)/2LL;
         if(f(mid,v,k)) i=mid+1;
-        else  j=mid;
+        else  j=mid-1;
     }
-    cout<<i-1<<'\n';
+    cout<<j<<'\n';
 }
 signed main()
 {
